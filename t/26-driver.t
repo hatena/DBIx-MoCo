@@ -21,7 +21,7 @@ t::mysql::MoCo->db->execute(<<__SQL__);
 CREATE TABLE foo (
     id INT PRIMARY KEY,
     value VARCHAR(255)
-)
+) ENGINE=MyISAM
 __SQL__
 
 plan tests => 16;

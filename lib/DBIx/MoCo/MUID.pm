@@ -3,7 +3,6 @@ use strict;
 use Exporter qw(import);
 our @EXPORT = qw(create_muid);
 
-use Net::Address::Ethernet qw(get_addresses);
 use Math::BigInt;
 use Time::HiRes;
 
@@ -23,7 +22,8 @@ sub _get_ipaddr {
 
     if (!$addr) {
         eval {
-            $addr = (get_addresses)[0]->{sIP};
+            require Net::Address::Ethernet;
+            $addr = (Net::Address::Ethernet::get_addresses())[0]->{sIP};
         };
     }
 

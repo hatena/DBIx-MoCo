@@ -19,7 +19,6 @@ WriteMakefile(
         List::MoreUtils         => 0,
         List::Util              => 0,
         Math::BigInt            => 0,
-        Net::Address::Ethernet  => 0,
         Path::Class             => 0,
         SQL::Abstract           => 0,
         Scalar::Util            => 0,
@@ -31,6 +30,12 @@ WriteMakefile(
         UNIVERSAL::require      => 0,
         URI                     => 0,
         YAML::Syck              => 0,
+
+        ($^O eq 'darwin') ? (
+            Net::Address::IP::Local => 0,
+        ) : (
+            Net::Address::Ethernet  => 0,
+        ),
     },
     ($] >= 5.005 ?
       (ABSTRACT_FROM  => 'lib/DBIx/MoCo.pm',
